@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["event","protagonist","public_perception","cognitive_gaps","twist_potential","suggested_models"],
+  "properties": {
+    "event": {"type": "string"},
+    "protagonist": {"type": "string"},
+    "public_perception": {
+      "type": "object",
+      "required": ["summary","emotional_baseline","sources","strength"],
+      "properties": {
+        "summary": {"type": "string"},
+        "emotional_baseline": {"type": "string"},
+        "sources": {"type": "array","items": {"type": "string"}},
+        "strength": {"type": "integer","minimum": 1,"maximum": 10}
+      }
+    },
+    "cognitive_gaps": {"type": "array","items": {"type": "string"}},
+    "twist_potential": {"type": "string"},
+    "suggested_models": {"type": "array","items": {"type": "string"}}
+  }
+}

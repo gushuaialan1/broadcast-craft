@@ -1,0 +1,11 @@
+# Staging outputs
+.broadcast-craft/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db

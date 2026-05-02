@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["event","protagonist","title","duration","platform","twist_level","historical_sources","perspective_model","script","emotion_curve","delivery_notes"],
+  "properties": {
+    "event": {"type": "string"},
+    "protagonist": {"type": "string"},
+    "title": {"type": "string"},
+    "duration": {"type": "string"},
+    "platform": {"type": "string"},
+    "twist_level": {"type": "string","enum": ["S","A","B"]},
+    "historical_sources": {"type": "array","items": {"type": "string"}},
+    "perspective_model": {"type": "string"},
+    "script": {
+      "type": "object",
+      "required": ["segments"],
+      "properties": {
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["time","text"],
+            "properties": {
+              "time": {"type": "string"},
+              "text": {"type": "string"},
+              "notes": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "emotion_curve": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["point","emotion","intensity"],
+        "properties": {
+          "point": {"type": "string"},
+          "emotion": {"type": "string"},
+          "intensity": {"type": "integer","minimum": 1,"maximum": 10}
+        }
+      }
+    },
+    "delivery_notes": {
+      "type": "object",
+      "required": ["tone","pace","key_moments"],
+      "properties": {
+        "tone": {"type": "string"},
+        "pace": {"type": "string"},
+        "key_moments": {"type": "array","items": {"type": "string"}}
+      }
+    }
+  }
+}

@@ -12,7 +12,14 @@ references:
   - references/hook_patterns.md
   - references/content_archetypes.md
   - references/quality_matrix.md
-version: "1.0.0"
+  - branches/history-twist/methodology.md
+branches:
+  history-twist:
+    path: branches/history-twist/
+    description: 历史短视频反差爆点——用不同视角重新审视熟悉历史事件，制造认知反差
+    cli: branches/history-twist/scripts/broadcast_craft.py
+    stages: [01_anchor, 02_twist, 03_hook, 04_compose, 05_review]
+version: "1.1.0"
 author: "derived from khazix-writer by 数字生命卡兹克"
 ---
 

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["event","protagonist","hooks","selected_hook","rhythm_design"],
+  "properties": {
+    "event": {"type": "string"},
+    "protagonist": {"type": "string"},
+    "hooks": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id","text","archetype","buttons","strength"],
+        "properties": {
+          "id": {"type": "integer"},
+          "text": {"type": "string","maxLength": 50},
+          "archetype": {"type": "string"},
+          "buttons": {"type": "array","items": {"type": "string"}},
+          "strength": {"type": "integer","minimum": 1,"maximum": 10}
+        }
+      }
+    },
+    "selected_hook": {
+      "type": "object",
+      "required": ["id","rationale"],
+      "properties": {
+        "id": {"type": "integer"},
+        "rationale": {"type": "string"}
+      }
+    },
+    "rhythm_design": {
+      "type": "object",
+      "required": ["segments"],
+      "properties": {
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["time","task","emotion"],
+            "properties": {
+              "time": {"type": "string"},
+              "task": {"type": "string"},
+              "emotion": {"type": "string"}
+            }
+          }
+        },
+        "second_hook_at": {"type": ["string","null"]}
+      }
+    }
+  }
+}

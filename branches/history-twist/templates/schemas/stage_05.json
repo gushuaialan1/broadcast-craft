@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["event","protagonist","review"],
+  "properties": {
+    "event": {"type": "string"},
+    "protagonist": {"type": "string"},
+    "review": {
+      "type": "object",
+      "required": ["five_questions","quality_matrix","overall_grade","verdict","fixes"],
+      "properties": {
+        "five_questions": {
+          "type": "object",
+          "required": ["twist_strength","historical_reliability","pacing","emotional_payoff","shareability"],
+          "properties": {
+            "twist_strength": {"$ref": "#/definitions/question_result"},
+            "historical_reliability": {"$ref": "#/definitions/question_result"},
+            "pacing": {"$ref": "#/definitions/question_result"},
+            "emotional_payoff": {"$ref": "#/definitions/question_result"},
+            "shareability": {"$ref": "#/definitions/question_result"}
+          }
+        },
+        "quality_matrix": {
+          "type": "object",
+          "required": ["L1_hard_rules","L2_style","L3_content","L4_human"],
+          "properties": {
+            "L1_hard_rules": {
+              "type": "object",
+              "required": ["pass"],
+              "properties": {
+                "pass": {"type": "boolean"},
+                "violations": {"type": "array","items": {"type": "string"}}
+              }
+            },
+            "L2_style": {"$ref": "#/definitions/level_result"},
+            "L3_content": {"$ref": "#/definitions/level_result"},
+            "L4_human": {"$ref": "#/definitions/level_result"}
+          }
+        },
+        "overall_grade": {"type": "string","enum": ["S","A","B","C"]},
+        "verdict": {"type": "string","enum": ["PASS","NEEDS_REVISION","REJECTED"]},
+        "fixes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["priority","location","issue","suggestion"],
+            "properties": {
+              "priority": {"type": "string","enum": ["P0","P1","P2"]},
+              "location": {"type": "string"},
+              "issue": {"type": "string"},
+              "suggestion": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "question_result": {
+      "type": "object",
+      "required": ["pass","score","note"],
+      "properties": {
+        "pass": {"type": "boolean"},
+        "score": {"type": "integer","minimum": 1,"maximum": 10},
+        "note": {"type": "string"}
+      }
+    },
+    "level_result": {
+      "type": "object",
+      "required": ["pass"],
+      "properties": {
+        "pass": {"type": "boolean"},
+        "score": {"type": "integer","minimum": 0,"maximum": 100}
+      }
+    }
+  }
+}
