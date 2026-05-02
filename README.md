@@ -5,7 +5,7 @@
 > Produce short-video broadcast scripts with personality, punch, and memorability.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.1.0-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-1.2.0-blue" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
   <img src="https://img.shields.io/badge/python-3.10%2B-yellow" alt="python">
 </p>
