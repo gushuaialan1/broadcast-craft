@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "event_name",
+    "source_investigation",
+    "legend_vs_fact",
+    "unsolved_core",
+    "recommended"
+  ],
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "source_investigation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_tier",
+          "source_name",
+          "original_text",
+          "key_detail"
+        ],
+        "properties": {
+          "source_tier": {
+            "type": "string",
+            "enum": [
+              "正史",
+              "野史",
+              "笔记",
+              "传说",
+              "演绎"
+            ]
+          },
+          "source_name": {
+            "type": "string"
+          },
+          "original_text": {
+            "type": "string"
+          },
+          "key_detail": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "legend_vs_fact": {
+      "type": "object",
+      "required": [
+        "differences",
+        "omissions_in_legend"
+      ],
+      "properties": {
+        "differences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "aspect",
+              "legend_says",
+              "source_says",
+              "significance"
+            ],
+            "properties": {
+              "aspect": {
+                "type": "string"
+              },
+              "legend_says": {
+                "type": "string"
+              },
+              "source_says": {
+                "type": "string"
+              },
+              "significance": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "omissions_in_legend": {
+          "type": "string"
+        }
+      }
+    },
+    "unsolved_core": {
+      "type": "object",
+      "required": [
+        "description",
+        "why_unsolved",
+        "suspense_level"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "why_unsolved": {
+          "type": "string"
+        },
+        "suspense_level": {
+          "type": "string",
+          "enum": [
+            "低",
+            "中",
+            "高",
+            "极高"
+          ]
+        }
+      }
+    },
+    "recommended": {
+      "type": "object",
+      "required": [
+        "mystery_model",
+        "core_hook",
+        "narrative_angle"
+      ],
+      "properties": {
+        "mystery_model": {
+          "type": "string"
+        },
+        "core_hook": {
+          "type": "string"
+        },
+        "narrative_angle": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@
 - **8 种 Hook 原型** — 反常识、反问、情绪引爆、数据冲击、秘密揭露、对立冲突、场景幻化、零成本好奇
 - **5 种内容原型** — 调查实验、产品体验、现象解读、工具分享、方法论分享
 - **L1-L4 四层质检** — 从硬性规则到活人感终审，确保每条文案不达 A 级不发布
-- **多分支架构** — 支持横向扩展专业领域（历史反差、科普解读、人物揭秘等）
+- **多分支架构** — 支持横向扩展专业领域（历史反差、历史悬疑、科普解读、人物揭秘等）
 - **零 LLM 依赖** — Skill 本身不调用任何模型 API，只负责生成 prompt 与编排流程
 
 ---
@@ -28,15 +28,16 @@
 ```bash
 # 克隆仓库
 git clone https://github.com/gushuaialan1/broadcast-craft.git
+
+# 分支一：历史反差爆点
 cd broadcast-craft/branches/history-twist
-
-# 生成单阶段 prompt
-python3 scripts/broadcast_craft.py stage 01_anchor \
-  --character 项羽 --event 垓下之战 --length 60s --platform 抖音
-
-# 一键生成全部5个阶段 prompt
 python3 scripts/broadcast_craft.py pipeline \
-  --character 项羽 --event 垓下之战 --platform 抖音
+  --character 项羽 --event 坜下之战 --platform 抖音
+
+# 分支二：历史悬疑档案
+cd broadcast-craft/branches/mystery-chronicles
+python3 scripts/broadcast_craft.py pipeline \
+  --character 诸葛亮 --event 七星灯 --platform 抖音
 ```
 
 ### Demo / 演示
@@ -77,7 +78,18 @@ broadcast-craft/
 │   ├── content_archetypes.md          # 5 种原型
 │   └── quality_matrix.md              # 四层质检
 └── branches/
-    └── history-twist/                 # 分支一：历史反差爆点
+    ├── history-twist/                 # 分支一：历史反差爆点
+    │   ├── methodology.md             # 分支方法论
+    │   ├── templates/
+    │   │   ├── prompts/               # 5 个阶段 prompt
+    │   │   └── schemas/               # 5 个 JSON schema
+    │   └── scripts/
+    │       ├── broadcast_craft.py     # CLI 入口
+    │       └── lib/
+    │           ├── prompt_builder.py  # 模板渲染
+    │           ├── state.py           # 状态管理
+    │           └── validator.py       # Schema 校验
+    └── mystery-chronicles/            # 分支二：历史悬疑档案
         ├── methodology.md             # 分支方法论
         ├── templates/
         │   ├── prompts/               # 5 个阶段 prompt
@@ -173,8 +185,9 @@ python3 scripts/broadcast_craft.py pipeline \
 
 - [x] 通用口播方法论骨架
 - [x] 分支一：history-twist 历史反差爆点
-- [ ] 分支二：science-twist 科普反差
-- [ ] 分支三：figure-twist 人物揭秘
+- [x] 分支二：mystery-chronicles 历史悬疑档案
+- [ ] 分支三：science-twist 科普反差
+- [ ] 分支四：figure-twist 人物揭秘
 - [ ] 自动化 LLM 调用插件（可选）
 - [ ] Web UI 版本
 
@@ -187,6 +200,7 @@ python3 scripts/broadcast_craft.py pipeline \
 - [5 种内容原型](references/content_archetypes.md)
 - [四层质检体系](references/quality_matrix.md)
 - [历史反差方法论](branches/history-twist/methodology.md)
+- [历史悬疑档案方法论](branches/mystery-chronicles/methodology.md)
 
 ---
 

@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "event_name",
+    "script",
+    "source_notes",
+    "emotional_arc",
+    "suspense_moment"
+  ],
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "script": {
+      "type": "object",
+      "required": [
+        "total_duration",
+        "total_chars",
+        "lines"
+      ],
+      "properties": {
+        "total_duration": {
+          "type": "string"
+        },
+        "total_chars": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "time",
+              "text",
+              "delivery_note",
+              "emotion",
+              "source_tier"
+            ],
+            "properties": {
+              "time": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "delivery_note": {
+                "type": "string"
+              },
+              "emotion": {
+                "type": "string"
+              },
+              "source_tier": {
+                "type": "string",
+                "enum": [
+                  "正史",
+                  "野史",
+                  "笔记",
+                  "传说",
+                  "演绎",
+                  "无"
+                ]
+              },
+              "source_name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "tier",
+          "source",
+          "caveat"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "正史",
+              "野史",
+              "笔记",
+              "传说",
+              "演绎"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "caveat": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "emotional_arc": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "emotion",
+          "intensity"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "emotion": {
+            "type": "string"
+          },
+          "intensity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "suspense_moment": {
+      "type": "object",
+      "required": [
+        "timestamp",
+        "text",
+        "why_it_works"
+      ],
+      "properties": {
+        "timestamp": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "why_it_works": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

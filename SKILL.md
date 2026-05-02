@@ -13,13 +13,19 @@ references:
   - references/content_archetypes.md
   - references/quality_matrix.md
   - branches/history-twist/methodology.md
+  - branches/mystery-chronicles/methodology.md
 branches:
   history-twist:
     path: branches/history-twist/
     description: 历史短视频反差爆点——用不同视角重新审视熟悉历史事件，制造认知反差
     cli: branches/history-twist/scripts/broadcast_craft.py
     stages: [01_anchor, 02_twist, 03_hook, 04_compose, 05_review]
-version: "1.1.0"
+  mystery-chronicles:
+    path: branches/mystery-chronicles/
+    description: 历史悬疑档案——挖掘正史/野史中真实记载的超自然/灵异/未解之谜，制造细思极恐的爆款短视频
+    cli: branches/mystery-chronicles/scripts/broadcast_craft.py
+    stages: [01_anchor, 02_twist, 03_hook, 04_compose, 05_review]
+version: "1.2.0"
 author: "derived from khazix-writer by 数字生命卡兹克"
 ---
 

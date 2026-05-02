@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "event_name",
+    "verdict",
+    "five_questions",
+    "overall_score",
+    "revision_notes",
+    "suspense_check"
+  ],
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION"
+      ]
+    },
+    "five_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "question",
+          "score",
+          "analysis",
+          "issue"
+        ],
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          },
+          "analysis": {
+            "type": "string"
+          },
+          "issue": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "overall_score": {
+      "type": "string"
+    },
+    "revision_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suspense_check": {
+      "type": "object",
+      "required": [
+        "has_clear_unsolved",
+        "open_ending_intact",
+        "no_pseudoscience",
+        "source_tier_labels"
+      ],
+      "properties": {
+        "has_clear_unsolved": {
+          "type": "boolean"
+        },
+        "open_ending_intact": {
+          "type": "boolean"
+        },
+        "no_pseudoscience": {
+          "type": "boolean"
+        },
+        "source_tier_labels": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

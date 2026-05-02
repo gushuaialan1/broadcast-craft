@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "event_name",
+    "hook_candidates",
+    "selected_hook",
+    "structure_design",
+    "atmosphere_notes"
+  ],
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "hook_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "text",
+          "why_works",
+          "intended_emotion"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "悬念型",
+              "反常型",
+              "细思极恐型",
+              "引用型"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "why_works": {
+            "type": "string"
+          },
+          "intended_emotion": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 2
+    },
+    "selected_hook": {
+      "type": "object",
+      "required": [
+        "text",
+        "platform_adaptation"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "platform_adaptation": {
+          "type": "object"
+        }
+      }
+    },
+    "structure_design": {
+      "type": "object",
+      "required": [
+        "overall_arc",
+        "pacing_nodes",
+        "tension_curve"
+      ],
+      "properties": {
+        "overall_arc": {
+          "type": "string"
+        },
+        "pacing_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "timestamp",
+              "function",
+              "content"
+            ],
+            "properties": {
+              "timestamp": {
+                "type": "string"
+              },
+              "function": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tension_curve": {
+          "type": "string"
+        }
+      }
+    },
+    "atmosphere_notes": {
+      "type": "object",
+      "required": [
+        "bgm_suggestion",
+        "visual_cue",
+        "tone_of_voice"
+      ],
+      "properties": {
+        "bgm_suggestion": {
+          "type": "string"
+        },
+        "visual_cue": {
+          "type": "string"
+        },
+        "tone_of_voice": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

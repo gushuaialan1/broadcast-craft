@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "event_name",
+    "protagonist",
+    "legend_version",
+    "mass_perception",
+    "suspense_potential",
+    "platform_fit"
+  ],
+  "properties": {
+    "event_name": {
+      "type": "string"
+    },
+    "protagonist": {
+      "type": "string"
+    },
+    "legend_version": {
+      "type": "object",
+      "required": [
+        "summary",
+        "key_elements",
+        "emotional_tone"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "key_elements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "emotional_tone": {
+          "type": "string"
+        }
+      }
+    },
+    "mass_perception": {
+      "type": "object",
+      "required": [
+        "what_people_think_they_know",
+        "common_misconception",
+        "source_of_legend"
+      ],
+      "properties": {
+        "what_people_think_they_know": {
+          "type": "string"
+        },
+        "common_misconception": {
+          "type": "string"
+        },
+        "source_of_legend": {
+          "type": "string"
+        }
+      }
+    },
+    "suspense_potential": {
+      "type": "object",
+      "required": [
+        "rating",
+        "reason",
+        "untapped_detail"
+      ],
+      "properties": {
+        "rating": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "S",
+            "A+",
+            "S+"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "untapped_detail": {
+          "type": "string"
+        }
+      }
+    },
+    "platform_fit": {
+      "type": "object",
+      "required": [
+        "recommended_platform",
+        "reason"
+      ],
+      "properties": {
+        "recommended_platform": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
