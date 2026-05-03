@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["script", "estimated_duration", "hook_line", "cta_line"],
+  "properties": {
+    "script": {"type": "string"},
+    "estimated_duration": {"type": "string"},
+    "hook_line": {"type": "string"},
+    "cta_line": {"type": "string"},
+    "platform_notes": {"type": "string"}
+  }
+}

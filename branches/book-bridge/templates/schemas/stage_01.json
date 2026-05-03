@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["book_title", "core_thesis", "deep_need"],
+  "properties": {
+    "book_title": {"type": "string"},
+    "core_thesis": {"type": "string", "maxLength": 200},
+    "historical_cases": {"type": "array", "items": {"type": "string"}},
+    "deep_need": {"type": "string", "maxLength": 300},
+    "fallback_used": {"type": "boolean"}
+  }
+}

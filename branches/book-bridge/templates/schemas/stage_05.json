@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "required": ["review_status", "score", "dimension_scores", "final_verdict"],
+  "properties": {
+    "review_status": {"type": "string", "enum": ["PASS", "NEEDS_REVISION"]},
+    "score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "dimension_scores": {
+      "type": "object",
+      "properties": {
+        "value_first": {"type": "integer"},
+        "soft_placement": {"type": "integer"},
+        "audience_fit": {"type": "integer"},
+        "no_hype": {"type": "integer"},
+        "fallback_compliance": {"type": "integer"}
+      }
+    },
+    "revision_notes": {"type": "string"},
+    "final_verdict": {"type": "string"}
+  }
+}

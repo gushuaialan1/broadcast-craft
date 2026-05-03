@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["story_title", "historical_scene", "emotion_curve", "open_question", "modern_mirror"],
+  "properties": {
+    "story_title": {"type": "string"},
+    "historical_scene": {"type": "string"},
+    "emotion_curve": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time": {"type": "string"},
+          "emotion": {"type": "string"},
+          "technique": {"type": "string"}
+        }
+      }
+    },
+    "open_question": {"type": "string"},
+    "modern_mirror": {"type": "string"}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": ["target_persona_raw", "pain_identity", "pain_scenario", "pain_emotion", "pain_aspiration", "historical_analog"],
+  "properties": {
+    "target_persona_raw": {"type": "string"},
+    "pain_identity": {"type": "string"},
+    "pain_scenario": {"type": "string"},
+    "pain_emotion": {"type": "string"},
+    "pain_aspiration": {"type": "string"},
+    "historical_analog": {"type": "string"},
+    "analog_rationale": {"type": "string"},
+    "book_relevance_score": {"type": "integer", "minimum": 0, "maximum": 10}
+  }
+}

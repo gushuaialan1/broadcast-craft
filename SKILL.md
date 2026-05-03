@@ -14,7 +14,7 @@ references:
   - references/quality_matrix.md
   - branches/history-twist/methodology.md
   - branches/mystery-chronicles/methodology.md
-  - branches/figure-twist/methodology.md
+  - branches/book-bridge/methodology.md
 branches:
   history-twist:
     path: branches/history-twist/
@@ -31,7 +31,12 @@ branches:
     description: 人物揭秘型短视频——剥掉大众标签，挖掘历史人物被忽略的多维人格，制造人设崩塌或人设补完的爽感
     cli: branches/figure-twist/scripts/broadcast_craft.py
     stages: [01_anchor, 02_mine, 03_hook, 04_compose, 05_review]
-version: "1.3.0"
+  book-bridge:
+    path: branches/book-bridge/
+    description: 史桥书单——用历史故事作为钩子激活用户痛点，让书籍成为解决方案的自然出口
+    cli: branches/book-bridge/scripts/broadcast_craft.py
+    stages: [01_book_anchor, 02_pain_mapping, 03_story_bridge, 04_compose, 05_review]
+version: "1.4.0"
 author: "derived from khazix-writer by 数字生命卡兹克"
 ---
 

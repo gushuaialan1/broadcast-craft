@@ -5,7 +5,7 @@
 > Produce short-video broadcast scripts with personality, punch, and memorability.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.3.0-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-1.4.0-blue" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
   <img src="https://img.shields.io/badge/python-3.10%2B-yellow" alt="python">
 </p>
@@ -18,7 +18,7 @@
 - **8 种 Hook 原型** — 反常识、反问、情绪引爆、数据冲击、秘密揭露、对立冲突、场景幻化、零成本好奇
 - **5 种内容原型** — 调查实验、产品体验、现象解读、工具分享、方法论分享
 - **L1-L4 四层质检** — 从硬性规则到活人感终审，确保每条文案不达 A 级不发布
-- **多分支架构** — 支持横向扩展专业领域（历史反差、历史悬疑、人物揭秘、科普解读等）
+- **多分支架构** — 支持横向扩展专业领域（历史反差、历史悬疑、人物揭秘、史桥书单、科普解读等）
 - **零 LLM 依赖** — Skill 本身不调用任何模型 API，只负责生成 prompt 与编排流程
 
 ---
@@ -39,10 +39,12 @@ cd broadcast-craft/branches/mystery-chronicles
 python3 scripts/broadcast_craft.py pipeline \\
   --character 诸葛亮 --event 七星灯 --platform 抖音
 
-# 分支三：人物揭秘
-cd broadcast-craft/branches/figure-twist
+# 分支四：史桥书单（用历史故事卖书，支持任意人群画像）
+cd broadcast-craft/branches/book-bridge
 python3 scripts/broadcast_craft.py pipeline \\
-  --figure 刘备 --tag "仁德之君" --platform 抖音
+  --book-title "人生下半场" \\
+  --target-persona "60岁退休男性，怕被社会遗忘，每天刷手机打发时间" \\
+  --platform 抖音
 ```
 
 ### Demo / 演示
@@ -116,6 +118,17 @@ broadcast-craft/
     │           ├── prompt_builder.py  # 模板渲染
     │           ├── state.py           # 状态管理
     │           └── validator.py       # Schema 校验
+    └── book-bridge/                  # 分支四：史桥书单
+        ├── methodology.md             # 分支方法论
+        ├── templates/
+        │   ├── prompts/               # 5 个阶段 prompt
+        │   └── schemas/               # 5 个 JSON schema
+        └── scripts/
+            ├── broadcast_craft.py     # CLI 入口
+            └── lib/
+                ├── prompt_builder.py  # 模板渲染
+                ├── state.py           # 状态管理
+                └── validator.py       # Schema 校验
 ```
 
 ---
@@ -141,6 +154,21 @@ python3 scripts/broadcast_craft.py stage <stage_name> \\
   [--length <时长>] [--platform <平台>]
 ```
 
+### book-bridge 卖书口播单阶段渲染
+
+```bash
+python3 scripts/broadcast_craft.py stage <stage_name> \\
+  --book-title <书名> --target-persona <用户画像> \\
+  [--fallback-theme <备选主题>] [--length <时长>] [--platform <平台>]
+```
+
+`用户画像`是完全自由文本，不限于职场场景。示例：
+- `"60岁退休男性，怕被社会遗忘，每天刷手机打发时间"`
+- `"35岁全职宝妈，孩子10岁叛逆期，吼完后悔"`
+- `"25岁应届生，面试紧张、聚会边缘化，害怕被拒绝"`
+
+若网上检索不到该书，请使用 `--fallback-theme` 指定主题，生成的文案会标注"基于 XX 主题展开"。
+
 ### figure-twist 单阶段渲染
 
 ```bash
@@ -151,8 +179,8 @@ python3 scripts/broadcast_craft.py stage <stage_name> \\
 
 `stage_name` 支持以下别名：
 - `01`, `01_anchor`, `anchor`, `stage_01`, `stage_01_anchor`
-- `02`, `02_twist`/`02_mine`, `twist`/`mine`, `stage_02`, `stage_02_twist`/`stage_02_mine`
-- `03`, `03_hook`, `hook`, `stage_03`, `stage_03_hook`
+- `02`, `02_twist`/`02_mine`/`02_pain_mapping`, `twist`/`mine`/`pain`, `stage_02`, `stage_02_twist`/`stage_02_mine`/`stage_02_pain_mapping`
+- `03`, `03_hook`/`03_story_bridge`, `hook`/`bridge`, `stage_03`, `stage_03_hook`/`stage_03_story_bridge`
 - `04`, `04_compose`, `compose`, `stage_04`, `stage_04_compose`
 - `05`, `05_review`, `review`, `stage_05`, `stage_05_review`
 
@@ -174,6 +202,11 @@ python3 scripts/broadcast_craft.py pipeline \\
 python3 scripts/broadcast_craft.py pipeline \\
   --figure <人物> --tag <大众标签> \\
   [--platform <平台>]
+
+# book-bridge
+python3 scripts/broadcast_craft.py pipeline \\
+  --book-title <书名> --target-persona <用户画像> \\
+  [--fallback-theme <备选主题>] [--platform <平台>]
 ```
 
 生成的 prompt 文件会写入 `.broadcast-craft/staging/` 目录。
@@ -217,7 +250,8 @@ python3 scripts/broadcast_craft.py pipeline \\
 - [x] 分支一：history-twist 历史反差爆点
 - [x] 分支二：mystery-chronicles 历史悬疑档案
 - [x] 分支三：figure-twist 人物揭秘
-- [ ] 分支四：science-twist 科普反差
+- [x] 分支四：book-bridge 史桥书单
+- [ ] 分支五：science-twist 科普反差
 - [ ] 自动化 LLM 调用插件（可选）
 - [ ] Web UI 版本
 
@@ -232,6 +266,7 @@ python3 scripts/broadcast_craft.py pipeline \\
 - [历史反差方法论](branches/history-twist/methodology.md)
 - [历史悬疑档案方法论](branches/mystery-chronicles/methodology.md)
 - [人物揭秘方法论](branches/figure-twist/methodology.md)
+- [史桥书单方法论](branches/book-bridge/methodology.md)
 
 ---
 
