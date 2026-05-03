@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "figure",
+    "tag",
+    "overall_verdict",
+    "dimension_scores"
+  ],
+  "properties": {
+    "figure": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "overall_verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION"
+      ]
+    },
+    "dimension_scores": {
+      "type": "object",
+      "required": [
+        "contrast_strength",
+        "source_reliability",
+        "persona_dimension",
+        "emotional_payoff",
+        "shareability"
+      ],
+      "properties": {
+        "contrast_strength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "source_reliability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "persona_dimension": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "emotional_payoff": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "shareability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "revision_direction": {
+      "type": "string"
+    }
+  }
+}

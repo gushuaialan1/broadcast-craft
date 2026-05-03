@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "figure",
+    "tag",
+    "hooks",
+    "selected_hook",
+    "rhythm",
+    "contrast_level"
+  ],
+  "properties": {
+    "figure": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "selected_hook": {
+      "type": "string"
+    },
+    "rhythm": {
+      "type": "object"
+    },
+    "emotion_arc": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contrast_level": {
+      "type": "string",
+      "enum": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ]
+    }
+  }
+}

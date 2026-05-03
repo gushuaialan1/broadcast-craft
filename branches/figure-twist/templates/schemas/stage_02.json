@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "figure",
+    "tag",
+    "evidence_items",
+    "recommended"
+  ],
+  "properties": {
+    "figure": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "evidence_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "quote",
+          "relevance",
+          "credibility"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "relevance": {
+            "type": "string"
+          },
+          "credibility": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        }
+      }
+    },
+    "twist_models": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended": {
+      "type": "object",
+      "required": [
+        "primary_model",
+        "core_contrast",
+        "evidence_chain",
+        "credibility_score"
+      ],
+      "properties": {
+        "primary_model": {
+          "type": "string"
+        },
+        "core_contrast": {
+          "type": "string"
+        },
+        "evidence_chain": {
+          "type": "string"
+        },
+        "credibility_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    }
+  }
+}

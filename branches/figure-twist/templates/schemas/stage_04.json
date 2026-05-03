@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "figure",
+    "tag",
+    "script",
+    "word_count"
+  ],
+  "properties": {
+    "figure": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "script": {
+      "type": "string",
+      "minLength": 50
+    },
+    "estimated_duration_sec": {
+      "type": "integer"
+    },
+    "word_count": {
+      "type": "integer",
+      "minimum": 200,
+      "maximum": 600
+    },
+    "key_soundbites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

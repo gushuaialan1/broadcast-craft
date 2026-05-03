@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "figure",
+    "tag",
+    "public_perception",
+    "potential_twist_directions"
+  ],
+  "properties": {
+    "figure": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "public_perception": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "tag_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fiction_contamination": {
+      "type": "string"
+    },
+    "emotional_tone": {
+      "type": "string"
+    },
+    "potential_twist_directions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 5
+    }
+  }
+}

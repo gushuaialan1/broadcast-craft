@@ -14,6 +14,7 @@ references:
   - references/quality_matrix.md
   - branches/history-twist/methodology.md
   - branches/mystery-chronicles/methodology.md
+  - branches/figure-twist/methodology.md
 branches:
   history-twist:
     path: branches/history-twist/
@@ -25,7 +26,12 @@ branches:
     description: 历史悬疑档案——挖掘正史/野史中真实记载的超自然/灵异/未解之谜，制造细思极恐的爆款短视频
     cli: branches/mystery-chronicles/scripts/broadcast_craft.py
     stages: [01_anchor, 02_twist, 03_hook, 04_compose, 05_review]
-version: "1.2.0"
+  figure-twist:
+    path: branches/figure-twist/
+    description: 人物揭秘型短视频——剥掉大众标签，挖掘历史人物被忽略的多维人格，制造人设崩塌或人设补完的爽感
+    cli: branches/figure-twist/scripts/broadcast_craft.py
+    stages: [01_anchor, 02_mine, 03_hook, 04_compose, 05_review]
+version: "1.3.0"
 author: "derived from khazix-writer by 数字生命卡兹克"
 ---
 
